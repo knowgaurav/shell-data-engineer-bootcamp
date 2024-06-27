@@ -33,10 +33,10 @@
   <p align="center">
 Explore this collection of lab projects completed during my On-boarding boot camp at Shell. As an Associate Data Engineer, I’ve delved into various topics, including Azure Data Factory (ADF), Azure Data Lake (ADL), and more. Dive into the code and documentation to witness my growth in the data engineering realm. Your feedback and collaboration are highly valued!
     <br />
-    <a href="https://github.com/knowgaurav/btech-lab-projects">View Demo</a>
+<!--     <a href="https://github.com/knowgaurav/btech-lab-projects">View Demo</a>
     ·
     <a href="https://github.com/knowgaurav/btech-lab-projects/issues">Report Bug</a>
     ·
-    <a href="https://github.com/knowgaurav/btech-lab-projects/issues">Request Feature</a>
+    <a href="https://github.com/knowgaurav/btech-lab-projects/issues">Request Feature</a> -->
   </p>
 </div>
