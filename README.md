@@ -28,10 +28,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">My B.Tech Lab Projects</h3>
+<h3 align="center">Shell Data Engineering Bootcamp</h3>
 
   <p align="center">
-Welcome to my GitHub repository featuring a collection of lab projects completed during my B.Tech at Amity University. This repository showcases projects from various courses, such as Algorithms, Database Management, Data Structures, Full Stack Development, Java, Python, C++, Software Product Management, and Web Technologies. Explore the code and documentation to witness my growth as a software engineer. Your feedback and collaboration are most welcome!
+Explore this collection of lab projects completed during my On-boarding boot camp at Shell. As an Associate Data Engineer, I’ve delved into various topics, including Azure Data Factory (ADF), Azure Data Lake (ADL), and more. Dive into the code and documentation to witness my growth in the data engineering realm. Your feedback and collaboration are highly valued!
     <br />
     <a href="https://github.com/knowgaurav/btech-lab-projects">View Demo</a>
     ·
