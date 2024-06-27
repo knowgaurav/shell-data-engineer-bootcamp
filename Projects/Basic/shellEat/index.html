@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Credit Cards Landing Page</title>
+</head>
+<body class="max-w-7xl mx-auto bg-neutral-500">
+    <nav class="flex justify-between items-center px-10 py-5 h-1/5 w-[100%] bg-amber-300 text-white font-semibold">
+        <!-- logo -->
+        <div>
+            <img src="./assets/icon/Logo.svg" alt="logo">
+        </div>
+        <!-- list components -->
+        <div>
+            <ul class="flex gap-10 max-sm:hidden">
+                <li>Home</li>
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>About us</li>
+            </ul>
+        </div>
+        <!-- buttons -->
+        <div class="flex gap-2">
+            <button class="flex max-lg:hidden">
+                <!-- <img class="" src="./assets/icon/btn-pink-bg.svg" alt=""> -->
+                <p class="bg-orange-500 px-2 py-3 rounded-xl">Contact Us</p>
+            </button>
+        </div>
+
+        <!-- Dropdown navbar item when dispaly become small -->
+        <select class="bg-black text-white hidden max-sm:block bg-black text-white">
+            <option value="option1">Home</option>
+            <option value="option2">Features</option>
+            <option value="option3">Pricing</option>
+            <option value="option4">About Us</option>
+            <option value="option5">Contact Us</option>
+            <option value="option6">GET STARTED </option>
+
+        </select>
+    </nav>
+
+    <!-- main section -->
+    <section class="bg-amber-300 text-white h-[100vh] flex flex-col pt-20 pb-20 z-[20]   ">
+        <img  class="z-20 absolute  top-[5%] left-[30%] h-[90%] w-[70%]  text-opacity-100  overflow-hidden max-sm:hidden" src="./assets/photo/frontCards-less-opacity.png" alt="">
+        <!-- <img  class=" absolute  top-[10%] left-[50%] h-[85%] w-[50%] opacity-100  overflow-hidden z-[10] max-md:hidden" src="./assets/photo/frontCards.png" alt=""> -->
+
+        <div class="w-[65%] ml-20 text-7xl  pb-10 max-sm:text-4xl">
+            <p>Simplify All Your Food Transactions using <span class="text-orange-500 font-bold text-opacity-100">One Card</span></p>
+        </div>
+
+        <div class="w-2/5 ml-20">
+            <p class="text-md text-white pb-10">
+                Hurry up and join now, with you can manage your daily finances easily and safely
+            </p>
+
+            <button class="flex text-xl bg-orange-500 px-3 py-4 rounded-xl">
+                GET STARTED 
+             <img class="mt-2 ml-2 max-sm:hidden" src="./assets/icon/RightArrow.svg" alt="">
+         </button>
+
+         <div class="text-xl mt-10 mb-20 max-md:hidden ">
+             <span class="mr-5">42K 
+                 <span class="text-orange-500">+</span> 
+                 Happy Active User
+             </span>
+             <span>|</span>
+             <span class="ml-5 font-bold z-[100]"> 
+                 12y
+                 <span class="text-orange-500">+</span>
+                 Year Experience
+             </span>
+         </div>
+     </div>
+    </section>
+
+    <section class="flex bg-orange-500  max-md:flex-col justify-around p-5">
+        <img class= "p-5"src="./assets/icon/Logo.svg" alt="">
+        <img class= "p-5" src="./assets/icon/Logo.svg" alt="">
+        <img class= "p-5" src="./assets/icon/Logo.svg" alt="">
+        <img class= "p-5" src="./assets/icon/Logo.svg" alt="">
+        <img class= "p-5" src="./assets/icon/Logo.svg" alt="">
+    </section>
+
+    <section class="bg-amber-300 text-white pt-20 pb-10 ">
+        <div class="flex max-md:flex-col">
+            <p class="text-6xl ml-16 mx-md:text-md">The best payment service for <span class="text-orange-500  mx-md:text-sm">your food transactions.</span></p>
+
+            <p class="text-2xl m-10  mx-md:text-md">The following are the services we offer to users, and it is our hope that they will be happy with what we offer.</p>
+
+        </div>
+        <div class="grid grid-cols-3 m-5 max-md:flex max-md:flex-col mt-20">
+            <div class="h-[250px] w-[300px] bg-gray-500 m-5  text-center text-2xl mt-16 border-y-2 border-l-4 border-lime-400"> <img class="ml-16" src="./assets/icon/dollar-circle.svg" alt="">Zero transactions fee</div>
+            
+            <div class="h-[250px] w-[300px] bg-gray-500 m-5 text-center text-2xl border-y-2 border-l-4 border-lime-400"> <img class="ml-16" src="./assets/icon/cloud-add.svg" alt="">Easy to access anytime and anywhere</div>
+            
+            <div class="h-[250px] w-[300px] bg-gray-500 m-5 text-center text-2xl mt-16 border-y-2 border-l-4 border-teal-400"> <img class="ml-16" src="./assets/icon/lock.svg" alt="">Guaranteed Safety</div>
+        </div>
+    </section>
+
+    <section class="flex flex-col bg-orange-500 text-white text-center pt-10">
+        
+        <p class="text-6xl p-5">Customer are satisfied with</p>
+        
+        <p class="text-5xl p-5"><span class="text-amber-300">the features </span>we provide</p>
+        
+        <p class="pt-10 text-white ">With the various features that we provide ,therefore many customer like the features that we are provide.</p>
+
+        <div class="grid grid-cols-2 max-md:flex max-md:flex-col p-5">
+            
+            <div class="flex flex-col h-[400px] w-[400px] bg-amber-300 m-5 text-2xl mt-16 border-y-2 border-l-4 border-orange-700 max-sm:w-[250px] max-md:h-[400px] p-5">
+
+                <div class="p-5"> <img src="./assets/icon/5stars.svg" alt=""></div>
+                <div class="p-5 text-md "><p>This is the best platfrom I've ever found lots of features that definatily make more satisfied</p></div>
+                <div class=" text-sm mr-[50%]">
+                    <p>Ranjeet Singh</p>
+                    <p>Lucknow,India</p>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col h-[400px] w-[400px] bg-amber-300 m-5 text-2xl mt-16 border-y-2 border-l-4 border-orange-700 max-sm:w-[250px] max-md:h-[400px] p-5">
+
+                <div class="p-5"> <img src="./assets/icon/4stars.svg" alt=""></div>
+                <div class="p-5 text-md "><p>This is the best platfrom I've ever found lots of features that definatily make more satisfied</p></div>
+                <div class=" text-sm mr-[50%]">
+                    <p>Ranjeet Singh</p>
+                    <p>Lucknow,India</p>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col h-[400px] w-[400px] bg-amber-300 m-5 text-2xl mt-16 border-y-2 border-l-4 border-orange-700 max-sm:w-[250px] max-md:h-[400px] p-5">
+
+                <div class="p-5"> <img src="./assets/icon/5stars.svg" alt=""></div>
+                <div class="p-5 text-md "><p>This is the best platfrom I've ever found lots of features that definatily make more satisfied</p></div>
+                <div class=" text-sm mr-[50%]">
+                    <p>Ranjeet Singh</p>
+                    <p>Lucknow,India</p>
+                </div>
+
+            </div>
+
+
+            <div class="flex flex-col h-[400px] w-[400px] bg-amber-300 m-5 text-2xl mt-16 border-y-2 border-l-4 border-orange-700 max-sm:w-[250px] max-md:h-[400px] p-5">
+
+                <div class="p-5"> <img src="./assets/icon/4stars.svg" alt=""></div>
+                <div class="p-5 text-md "><p>This is the best platfrom I've ever found lots of features that definatily make more satisfied</p></div>
+                <div class=" text-sm mr-[50%]">
+                    <p>Ranjeet Singh</p>
+                    <p>Lucknow,India</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="h-[65vh] bg-orange-500">
+        <div class="relative">
+            <img class="absolute bg-black " src="./assets/photo/Rectangle 6773.png" alt="">
+            <div class="relative">
+                <img class="absolute " src="./assets/photo/Rectangle 6774.png" alt="">
+                <!-- <img class="absolute    " src="./assets/photo/Diamond-left.png" alt=""> -->
+                <!-- <img class="absolute right-[0%]    " src="./assets/photo/Diamond-right.png" alt=""> -->
+                <div class="absolute mt-52 max-md:mt-28  left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                    <p class="text-white text-5xl max-md:text-xl font-bold">Get your own 
+                        <span class="text-amber-300">ShellEats</span> Card now!
+                    </p>
+                    <button class="  mt-16 text-xl max-md:mt-4 max-md:px-4 max-md:py-2 max-sm:px-2  bg-amber-300 text-white px-7 py-4 rounded-xl">
+                        GET STARTED 
+                 </button>
+
+                  </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="flex justify-around bg-black text-white p-10">
+        <div >
+            <img class="mx-md:hidden" src="./assets/icon/Logo.svg" alt="">
+        </div>
+        <div>
+            <ul  class="flex gap-10 mx-md:hidden">
+                <li>Branding</li>
+                <li>Contact Us</li>
+                <li>Privacy Policy</li>
+                <li>FAQs</li>
+            </ul>
+        </div>
+    </section>
+
+
+</body>
+</html>

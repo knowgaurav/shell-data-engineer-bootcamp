@@ -1,0 +1,371 @@
+/* Name of the product with most no. of sales */
+SELECT product_id, count(product_id) CNT
+FROM [dbo].[order_details]
+GROUP BY product_id having count(product_id) = (
+select max(q.cnt) from (SELECT product_id, count(product_id) CNT
+FROM [dbo].[order_details]
+GROUP BY product_id)q)
+
+/* Name of the people living in the state with most no. of people */
+SELECT id, first_name, last_name, state
+FROM [dbo].[customers]
+WHERE state IN
+(SELECT state
+FROM [dbo].[customers]
+GROUP BY state
+having count(id) =
+(SELECT max(q.CNT)
+FROM (SELECT state, count(id) CNT
+FROM [dbo].[customers]
+GROUP BY state)q))
+
+
+/* Give order  */
+
+SELECT product_name
+FROM [dbo].[products]
+WHERE id IN
+(SELECT product_id
+FROM [dbo].[order_details]
+WHERE order_id IN
+(SELECT id 
+FROM orders 
+WHERE customer_id = (SELECT id
+FROM [dbo].[customers]
+WHERE first_name='Emily' AND last_name='Cooper')))
+
+
+SELECT product_name
+FROM [dbo].[products]
+WHERE id IN
+(SELECT product_id
+FROM [dbo].[order_details]
+WHERE order_id IN
+(SELECT id 
+FROM orders 
+WHERE customer_id = (SELECT id
+FROM [dbo].[customers]
+WHERE first_name='Emily' AND last_name='Cooper')))
+
+SELECT DISTINCT C.first_name, C.last_name, P.product_name
+FROM [dbo].[customers] C, [dbo].[products] P, [dbo].[order_details] OD, [dbo].[orders] O
+WHERE C.id=O.customer_id
+AND O.id=OD.order_id
+AND C.first_name='Emily' AND C.last_name='Cooper';
+
+SELECT product_name
+FROM [dbo].[products]
+WHERE id IN
+(SELECT product_id
+FROM [dbo].[order_details]
+WHERE order_id IN
+(SELECT id 
+FROM orders 
+WHERE customer_id = (SELECT id
+FROM [dbo].[customers]
+WHERE first_name='Emily' AND last_name='Cooper')))
+
+SELECT DISTINCT C.first_name, C.last_name, P.product_name
+FROM [dbo].[customers] C, [dbo].[products] P, [dbo].[order_details] OD, [dbo].[orders] O
+WHERE C.id=O.customer_id
+AND O.id=OD.order_id
+AND C.first_name='Emily' AND C.last_name='Cooper'
+
+
+/*Total revenue from each order*/
+SELECT order_id, SUM(quantity*unit_price) as total_revenue
+FROM [dbo].[order_details]
+GROUP BY order_id;
+
+
+
+
+SELECT DISTINCT SAL
+FROM [dbo].[EMP]
+ORDER BY SAL DESC;
+
+/*Employee with the highest salary*/
+SELECT *
+FROM [dbo].[EMP]
+WHERE SAL = (SELECT MAX(SAL) FROM [dbo].[EMP])
+
+/*2nd highest salary*/
+SELECT *
+FROM [dbo].[EMP]
+WHERE SAL = (SELECT MAX(SAL)
+FROM [dbo].[EMP]
+WHERE SAL < (SELECT MAX(SAL) FROM [dbo].[EMP])
+)
+
+SELECT DISTINCT SAL
+FROM [dbo].[EMP]
+ORDER BY SAL DESC;
+
+/*Employee with the highest salary*/
+SELECT *
+FROM [dbo].[EMP]
+WHERE SAL = (SELECT MAX(SAL) FROM [dbo].[EMP])
+
+/*2nd highest salary*/
+SELECT *
+FROM [dbo].[EMP]
+WHERE SAL = (SELECT MAX(SAL)
+FROM [dbo].[EMP]
+WHERE SAL < (SELECT MAX(SAL) FROM [dbo].[EMP])
+)
+
+/*Manager with most number of employees*/
+SELECT TOP 1 M.ENAME AS 'MGR_NAME', COUNT(*) AS 'E_COUNT'
+FROM [dbo].[EMP] E, [dbo].[EMP] M
+WHERE E.MGR = M.EMPNO
+GROUP BY M.ENAME
+ORDER BY E_COUNT DESC;
+
+/*Manager with most number of employees*/
+SELECT TOP 1 M.EMPNO, M.ENAME AS 'MGR_NAME', COUNT(*) AS 'E_COUNT'
+FROM [dbo].[EMP] E, [dbo].[EMP] M
+WHERE E.MGR = M.EMPNO
+GROUP BY M.EMPNO, M.ENAME
+ORDER BY E_COUNT DESC;
+
+/*Manager with most number of employees*/
+SELECT TOP 1 M.EMPNO, M.ENAME AS 'MGR_NAME', COUNT(*) AS 'E_COUNT'
+FROM [dbo].[EMP] E, [dbo].[EMP] M
+WHERE E.MGR = M.EMPNO
+GROUP BY M.EMPNO, M.ENAME
+ORDER BY E_COUNT DESC;
+
+SELECT DISTINCT M.ENAME AS 'MGR'
+FROM [dbo].[EMP] E
+RIGHT OUTER JOIN [dbo].[EMP] M
+ON E.MGR = M.EMPNO
+WHERE E.ENAME IS NULL
+
+SELECT * FROM [dbo].[DEPT];
+
+DELETE FROM [dbo].[DEPT]
+WHERE DEPTNO=10;
+
+/*Employees with no departments*/
+SELECT ENAME, DNAME
+FROM EMP E
+LEFT OUTER JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE D.DNAME IS NULL;
+
+/*Name of Employees with no managers*/
+SELECT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+LEFT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE M.ENAME IS NULL;
+
+/*Name of Employees with no employees under them*/
+SELECT DISTINCT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+RIGHT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE E.ENAME IS NULL;
+
+
+SELECT DISTINCT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+FULL OUTER JOIN EMP M
+ON E.MGR = M.EMPNO;
+
+SELECT E.ENAME
+FROM EMP E
+WHERE MGR NOT IN (SELECT DISTINCT MGR
+FROM EMP
+WHERE MGR IS NOT NULL)
+
+SELECT * FROM EMP;
+
+/*Name of employees who have salary more than the avg salary*/
+SELECT E.ENAME, E.SAL
+FROM EMP E
+WHERE E.SAL > 
+(SELECT AVG(SAL) AS 'SAL'
+FROM EMP)
+
+/*Name of employees who have salary more than their department avg salary*/
+SELECT E.ENAME, E.SAL, E.DEPTNO
+FROM EMP E
+,(
+SELECT DEPTNO, AVG(SAL) AS 'SAL'
+FROM EMP
+GROUP BY DEPTNO) Q 
+WHERE E.DEPTNO = Q.DEPTNO AND E.SAL > Q.SAL; 
+
+SELECT ENAME, DEPTNO, SAL
+FROM EMP A
+WHERE SAL > 
+(
+	SELECT AVG(SAL)
+	FROM EMP B
+	WHERE B.DEPTNO = A.DEPTNO
+)
+
+SELECT ENAME, DEPTNO, SAL
+FROM EMP A
+WHERE SAL = (
+	SELECT MAX(SAL)
+	FROM EMP B
+	WHERE B.DEPTNO = A.DEPTNO
+)
+
+WITH Q(DEPTNO,ASAL) AS
+(
+SELECT DEPTNO, AVG(SAL)
+FROM EMP
+GROUP BY DEPTNO)
+
+SELECT E.ENAME, E.SAL, E.DEPTNO
+FROM EMP E, Q 
+WHERE E.DEPTNO = Q.DEPTNO AND E.SAL > Q.ASAL;
+
+INSERT INTO Customers VALUES(1, 'Amit');
+INSERT INTO Customers VALUES(2, 'Akash');
+
+INSERT INTO Loan VALUES(1, 30000, 'Home');
+INSERT INTO Loan VALUES(1, 20000, 'Personal');
+INSERT INTO Loan VALUES(2, 10000, 'Personal');
+INSERT INTO Loan VALUES(2, 50000, 'Home');
+
+INSERT INTO ACCOUNT VALUES(1, 2000, 'Savings');
+INSERT INTO ACCOUNT VALUES(1, 8000, 'Current');
+INSERT INTO ACCOUNT VALUES(2, 1000, 'Savings');
+INSERT INTO ACCOUNT VALUES(2, 3000, 'Current');
+
+ALTER TABLE Loan
+DROP PRIMARY KEY;
+
+CREATE TABLE LOAN(
+	CID INT,
+	LAMOUNT INT,
+	LTYPE VARCHAR(20)
+)
+
+DROP TABLE LOAN;
+
+ALTER TABLE ACCOUNT
+RENAME 'ACCAMOUNT' TO 'ACCBAL';
+
+SELECT * FROM ACCOUNT;
+
+SELECT C.CNAME, SUM(ACCAMOUNT) AS 'Total_Bal'
+FROM CUSTOMERS C
+INNER JOIN ACCOUNT A ON C.CID = A.CID
+GROUP BY C.CNAME;
+
+SELECT C.CNAME, SUM(ACCAMOUNT) AS 'Total_Bal', SUM(LAMOUNT) AS 'Loan_Amt'
+FROM CUSTOMERS C
+INNER JOIN ACCOUNT A ON C.CID = A.CID
+INNER JOIN LOAN L ON L.CID = A.CID
+GROUP BY C.CNAME;
+
+SELECT * FROM [dbo].[DEPT];
+
+DELETE FROM [dbo].[DEPT]
+WHERE DEPTNO=10;
+
+/*Employees with no departments*/
+SELECT ENAME, DNAME
+FROM EMP E
+LEFT OUTER JOIN DEPT D
+ON E.DEPTNO = D.DEPTNO
+WHERE D.DNAME IS NULL;
+
+/*Name of Employees with no managers*/
+SELECT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+LEFT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE M.ENAME IS NULL;
+
+/*Name of Employees with no employees under them*/
+SELECT DISTINCT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+RIGHT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE E.ENAME IS NULL;
+
+
+SELECT DISTINCT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+FULL OUTER JOIN EMP M
+ON E.MGR = M.EMPNO;
+
+SELECT E.ENAME
+FROM EMP E
+WHERE MGR NOT IN (SELECT DISTINCT MGR
+FROM EMP
+WHERE MGR IS NOT NULL)
+
+SELECT * FROM EMP;
+
+/*Name of employees who have salary more than the avg salary*/
+SELECT E.ENAME, E.SAL
+FROM EMP E
+WHERE E.SAL > 
+(SELECT AVG(SAL) AS 'SAL'
+FROM EMP)
+
+/*Name of employees who have salary more than their department avg salary*/
+SELECT E.ENAME, E.SAL, E.DEPTNO
+FROM EMP E
+,(
+SELECT DEPTNO, AVG(SAL) AS 'SAL'
+FROM EMP
+GROUP BY DEPTNO) Q 
+WHERE E.DEPTNO = Q.DEPTNO AND E.SAL > Q.SAL; 
+
+SELECT ENAME, DEPTNO, SAL
+FROM EMP A
+WHERE SAL > 
+(
+	SELECT AVG(SAL)
+	FROM EMP B
+	WHERE B.DEPTNO = A.DEPTNO
+)
+
+SELECT ENAME, DEPTNO, SAL
+FROM EMP A
+WHERE SAL = (
+	SELECT MAX(SAL)
+	FROM EMP B
+	WHERE B.DEPTNO = A.DEPTNO
+)
+
+SELECT DISTINCT M.ENAME AS 'MGR', 'Manager' AS 'Status'
+FROM EMP E
+RIGHT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE E.ENAME IS NOT NULL
+UNION
+SELECT DISTINCT M.ENAME AS 'Emp', 'Not Manager' AS 'Status'
+FROM EMP E
+RIGHT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO
+WHERE E.ENAME IS NULL;
+
+SELECT DISTINCT E.ENAME AS 'EMP', M.ENAME AS 'MGR'
+FROM EMP E
+LEFT OUTER JOIN EMP M
+ON E.MGR = M.EMPNO;
+
+SELECT ENAME FROM EMP
+UNION
+SELECT DNAME FROM DEPT;
+
+SELECT ENAME, SAL + COALESCE(COMM, 0) AS 'total_salary'
+FROM EMP;
+
+https://notepad.pw/shellidasep23
+
+
+
+
+
+
+ 

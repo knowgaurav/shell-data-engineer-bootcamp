@@ -1,0 +1,13 @@
+BEGIN TRANSACTION  
+-- SQL Statements  
+UPDATE EMPLOYEE SET empId = 0006 WHERE empId = 0003  
+SELECT * FROM EMPLOYEE;
+--Undo Changes  
+ROLLBACK TRANSACTION  
+
+https://onecompiler.com/sqlserver/3zj9kyfqt
+
+eqnaw87kr4@waterisgone.com
+Shell@9988
+
+https://github.com/ranjeet7287/CreditCardLandingPage

@@ -1,0 +1,13 @@
+1. Creating Organisation
+2. Creating Project
+3. Creating Sprint
+4. Creating Epic
+5. Creating Task
+6. Creating Issue
+7. Explored Dashboard
+8. Explored Work Items on Azure Devops
+9. Explored Boards View
+10. Explored Backlogs View
+11. Explored Sprints View
+12. Used Process Management to switch to traditional Agile in Azure Devops
+13. Explored add testing and running tests for user stories
